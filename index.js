@@ -20,15 +20,23 @@ function handleBoxClick(e) {
 }
 
 function renderBox() {
+  let boxSize = getRandom(30, 100);
   $game.innerHTML = "";
+  let gameSize = $game.getBoundingClientRect();
+  let maxTop = gameSize.height - boxSize;
+  let maxLeft = gameSize.width - boxSize;
   let box = document.createElement("div");
-  box.style.cssText = `height : 50px;
-                        width : 50px;
+  box.style.cssText = `height : ${boxSize}px;
+                        width : ${boxSize}px;
                         position : absolute;
                         background : #000;
-                        left : 70px;
-                        top : 50px;
+                        left : ${getRandom(0, maxLeft)}px;
+                        top : ${getRandom(0, maxTop)}px;
                         cursor : pointer`;
   box.setAttribute("data-box", "true");
   $game.insertAdjacentElement("afterbegin", box);
+}
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
