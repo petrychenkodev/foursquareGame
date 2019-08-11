@@ -29,7 +29,9 @@ function renderBox() {
   box.style.cssText = `height : ${boxSize}px;
                         width : ${boxSize}px;
                         position : absolute;
-                        background : #000;
+                        background : #${Math.floor(
+                          Math.random() * (999999 - 100000) + 100000
+                        )};
                         left : ${getRandom(0, maxLeft)}px;
                         top : ${getRandom(0, maxTop)}px;
                         cursor : pointer`;
